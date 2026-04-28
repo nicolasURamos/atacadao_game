@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://bjwqr7vs2wum1"]
+
+[ext_resource type="Script" uid="uid://kxpecj15s1tm" path="res://cenas/ui/tela_transicao.gd" id="1_ri1ec"]
+
+[sub_resource type="Animation" id="Animation_x3a2q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BG:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5hj1q"]
+resource_name = "out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BG:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vw27n"]
+_data = {
+&"RESET": SubResource("Animation_x3a2q"),
+&"out": SubResource("Animation_5hj1q")
+}
+
+[node name="TelaTransicao" type="CanvasLayer" unique_id=1822805332 groups=["tela_transicao"]]
+process_mode = 3
+layer = 2
+script = ExtResource("1_ri1ec")
+
+[node name="BG" type="ColorRect" parent="." unique_id=1752305507]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=532929684]
+libraries/ = SubResource("AnimationLibrary_vw27n")

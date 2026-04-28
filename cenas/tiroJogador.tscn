@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dqe35st8tco8v"]
+
+[ext_resource type="PackedScene" uid="uid://bno70c830hcsa" path="res://cenas/projetil.tscn" id="1_ldn7u"]
+[ext_resource type="Texture2D" uid="uid://bpdlg5s0qb1h7" path="res://assets/soda can/soda_can_21_front.png" id="2_b864d"]
+
+[node name="tiroJogador" unique_id=964633233 instance=ExtResource("1_ldn7u")]
+collision_mask = 2
+speedBulet = 200
+
+[node name="Sprite2D" parent="." index="0" unique_id=1746427633]
+position = Vector2(-0.99999994, 4.7683716e-07)
+rotation = 1.5707964
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_b864d")

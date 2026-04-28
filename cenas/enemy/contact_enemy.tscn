@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://c4datt82yug1r"]
+
+[ext_resource type="PackedScene" uid="uid://crqvd4qt58er3" path="res://cenas/enemy/enemy.tscn" id="1_qjfrm"]
+[ext_resource type="Script" uid="uid://p76bc4dlnm3b" path="res://cenas/enemy/contact_enemy.gd" id="2_4b2mp"]
+[ext_resource type="SpriteFrames" uid="uid://dfvkmsck5edmf" path="res://resources/blue_hair_woman.tres" id="3_ies16"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4b2mp"]
+radius = 9.0
+
+[node name="ContactEnemy" unique_id=943574691 instance=ExtResource("1_qjfrm")]
+script = ExtResource("2_4b2mp")
+speed = 30.0
+
+[node name="Sprite2D" parent="." index="0" unique_id=671913841]
+sprite_frames = ExtResource("3_ies16")
+animation = &"baixo"
+autoplay = "baixo"
+
+[node name="ContactHitbox" type="Area2D" parent="." index="2" unique_id=716171027]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ContactHitbox" index="0" unique_id=1748044179]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_4b2mp")
+debug_color = Color(0.9626915, 0.19594106, 0, 0.41960785)
+
+[connection signal="body_entered" from="ContactHitbox" to="." method="_on_contact_hitbox_body_entered"]

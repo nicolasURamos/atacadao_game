@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://crqvd4qt58er3"]
+
+[ext_resource type="Script" uid="uid://diecrthycab0y" path="res://cenas/enemy/enemy.gd" id="1_sbeh8"]
+[ext_resource type="PackedScene" uid="uid://chid4rl5igy1w" path="res://cenas/experience.tscn" id="2_sbeh8"]
+[ext_resource type="PackedScene" uid="uid://w55r77vqco50" path="res://cenas/enemy/explosion_vfx.tscn" id="3_js50s"]
+[ext_resource type="AudioStream" uid="uid://b4na26vfianfb" path="res://assets/sons/hitHurt.wav" id="3_tprhc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_53hn4"]
+radius = 5.0
+
+[node name="Enemy" type="CharacterBody2D" unique_id=943574691 groups=["enemy"]]
+collision_layer = 2
+collision_mask = 3
+motion_mode = 1
+platform_floor_layers = 4294967040
+script = ExtResource("1_sbeh8")
+health = 2
+EXP_SCENE = ExtResource("2_sbeh8")
+BOOM_SCENE = ExtResource("3_js50s")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=671913841]
+position = Vector2(0, -11)
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1634371866]
+shape = SubResource("CircleShape2D_53hn4")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=698973412]
+stream = ExtResource("3_tprhc")
+
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
+[connection signal="tree_exiting" from="." to="." method="explosdion"]

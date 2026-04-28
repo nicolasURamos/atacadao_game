@@ -1,0 +1,181 @@
+[gd_scene format=3 uid="uid://brgw6gy27nqhr"]
+
+[ext_resource type="Script" uid="uid://c0wu2daf2u37j" path="res://cenas/ui/game_over_screen.gd" id="1_1q1wx"]
+[ext_resource type="FontFile" uid="uid://c44nr2nvfbign" path="res://assets/font/Daydream DEMO.otf" id="2_fool0"]
+
+[sub_resource type="Animation" id="Animation_1q1wx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(457, 42)]
+}
+
+[sub_resource type="Animation" id="Animation_fool0"]
+resource_name = "default"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(344, 42), Vector2(344, 52)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qwirh"]
+_data = {
+&"RESET": SubResource("Animation_1q1wx"),
+&"default": SubResource("Animation_fool0")
+}
+
+[sub_resource type="Animation" id="Animation_thnbs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BG:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.39215687)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Title:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_u8oyo"]
+resource_name = "activate"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BG:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.39215687)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Title:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.46666667, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hrn7m"]
+_data = {
+&"RESET": SubResource("Animation_thnbs"),
+&"activate": SubResource("Animation_u8oyo")
+}
+
+[node name="GameOverScreen" type="Control" unique_id=1017902047]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1q1wx")
+
+[node name="BG" type="ColorRect" parent="." unique_id=141286884]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.39215687)
+metadata/_edit_lock_ = true
+
+[node name="Title" type="Label" parent="." unique_id=1869368515]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -296.0
+offset_top = 42.31618
+offset_right = 298.0
+offset_bottom = 146.3162
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5176471)
+theme_override_constants/shadow_offset_x = 16
+theme_override_constants/shadow_offset_y = 16
+theme_override_constants/outline_size = 32
+theme_override_fonts/font = ExtResource("2_fool0")
+theme_override_font_sizes/font_size = 64
+text = "GAME OVER"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Title" unique_id=921016088]
+libraries/ = SubResource("AnimationLibrary_qwirh")
+autoplay = &"default"
+
+[node name="Restart" type="Button" parent="." unique_id=1751369645]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -15.5
+offset_right = 37.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_fool0")
+text = "RESTART"
+
+[node name="MainMenu" type="Button" parent="." unique_id=154277424]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.0
+offset_top = 24.0
+offset_right = 38.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_fool0")
+text = "MAIN MENU"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1533111750]
+libraries/ = SubResource("AnimationLibrary_hrn7m")
+
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="MainMenu" to="." method="_on_main_menu_pressed"]

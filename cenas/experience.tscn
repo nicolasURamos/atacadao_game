@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://chid4rl5igy1w"]
+
+[ext_resource type="Script" uid="uid://do56w8bp41mct" path="res://experience.gd" id="1_df8le"]
+[ext_resource type="Texture2D" uid="uid://dkxs1ne1hvit" path="res://assets/menu/cupom.png" id="2_myd4x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_df8le"]
+radius = 4.0
+
+[node name="experience" type="Area2D" unique_id=1256658823]
+script = ExtResource("1_df8le")
+
+[node name="cupom" type="Sprite2D" parent="." unique_id=260577170]
+position = Vector2(0, -4.4703484e-08)
+scale = Vector2(0.1754386, 0.14386791)
+texture = ExtResource("2_myd4x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1871136678]
+shape = SubResource("CircleShape2D_df8le")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

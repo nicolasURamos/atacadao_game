@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://clr35ir0v1xx7"]
+
+[ext_resource type="Script" uid="uid://dskkasjkndmf7" path="res://cenas/ui/main_menu.gd" id="1_4r5o0"]
+[ext_resource type="PackedScene" uid="uid://bjwqr7vs2wum1" path="res://cenas/ui/tela_transicao.tscn" id="2_pv0rq"]
+[ext_resource type="Texture2D" uid="uid://ctdqft41euhnr" path="res://assets/menu/menuBG.png" id="3_f7ohg"]
+[ext_resource type="Texture2D" uid="uid://66o5wkccvhxg" path="res://assets/menu/play.png" id="4_qr82r"]
+[ext_resource type="Texture2D" uid="uid://bhg3pexehdoec" path="res://assets/menu/quit.png" id="5_yeojv"]
+
+[node name="MainMenu" type="CanvasLayer" unique_id=769440304]
+script = ExtResource("1_4r5o0")
+
+[node name="TelaTransicao" parent="." unique_id=1822805332 instance=ExtResource("2_pv0rq")]
+start_with_fadein = true
+
+[node name="bg_Menu" type="Sprite2D" parent="." unique_id=763387055]
+position = Vector2(641.125, 361.49997)
+scale = Vector2(0.93150437, 0.9361978)
+texture = ExtResource("3_f7ohg")
+metadata/_edit_lock_ = true
+
+[node name="Play" type="Button" parent="." unique_id=1729350853]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = 37.0
+offset_right = 726.00024
+offset_bottom = 263.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.2, 0.2)
+icon = ExtResource("4_qr82r")
+
+[node name="Quit" type="Button" parent="." unique_id=931631971]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = 90.0
+offset_right = 726.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.2, 0.2)
+icon = ExtResource("5_yeojv")
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

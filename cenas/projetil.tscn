@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bno70c830hcsa"]
+
+[ext_resource type="Script" uid="uid://wth131k0hw2v" path="res://cenas/projetil.gd" id="1_j4buw"]
+[ext_resource type="Texture2D" uid="uid://dlv8k1lv5jt62" path="res://icon.svg" id="2_wjayw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ucxru"]
+radius = 6.0
+
+[node name="projetil" type="Area2D" unique_id=964633233]
+collision_layer = 0
+script = ExtResource("1_j4buw")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1746427633]
+position = Vector2(-0.7499989, 0.124999836)
+scale = Vector2(0.082031265, 0.080078125)
+texture = ExtResource("2_wjayw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=65312482]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_ucxru")
+
+[node name="Timer" type="Timer" parent="." unique_id=1251548574]
+wait_time = 5.0
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
